@@ -1,0 +1,89 @@
+@use "../abstracts/variables" as var;
+@use "sass:math";
+
+.container {
+  display: flex;
+}
+.dropdown-nav {
+  display: none;
+}
+.sidebar {
+  width: var.$sidebar-width;
+  padding: 1.2 * var.$gutter-base;
+  background-color: var.$background-color-base;
+  position: fixed;
+  height: 100%;
+
+  nav {
+    margin-top: 1.2 * var.$gutter-base;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.33 * var.$gutter-base;
+
+        a {
+          text-decoration: none;
+          color: var.$text-color-secondary;
+          font-size: 0.6 * var.$gutter-base;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0.67 * var.$gutter-base;
+    font-size: 0.5 * var.$gutter-base;
+    a {
+      color: var.$text-color-base;
+      font-weight: var.$font-weight-bold;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    line-height: var.$gutter-base;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    nav {
+      display: none;
+    }
+    .dropdown-nav {
+      color: var.$text-color-secondary;
+      display: flex;
+      padding: 0.27 * var.$gutter-base;
+      border: 1px solid var.$text-color-secondary;
+      position: relative;
+      &:hover {
+        .drop-down {
+          display: block;
+        }
+      }
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #ffffff;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        width: 150px;
+        padding: 0.5 * var.$gutter-base;
+      }
+    }
+    footer {
+      display: none;
+    }
+  }
+}
